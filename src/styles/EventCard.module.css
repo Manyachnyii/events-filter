@@ -1,0 +1,38 @@
+.card {
+  border-radius: 6px;
+  padding: 20px;
+  display: grid;
+}
+
+.card > span {
+  font-style: normal;
+  font-size: 2rem;
+  line-height: 66px;
+  color: #ffffff;
+}
+
+.day {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+
+.name {
+  font-weight: 600;
+  align-self: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 40px;
+  }
+}
