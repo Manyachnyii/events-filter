@@ -31,6 +31,12 @@
   text-overflow: ellipsis;
 }
 
+.bookmark {
+  width: 14px;
+  height: 18px;
+  float: right;
+}
+
 @media (min-width: 768px) {
   .card {
     padding: 40px;
