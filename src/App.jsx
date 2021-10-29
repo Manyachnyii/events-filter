@@ -3,16 +3,32 @@ import { EventCards } from "./components/EventCards";
 import { SelectBar } from "./components/SelectBar";
 
 import { unifiqueArray } from "./utils/unifiqueArray";
-import { Dataset } from "./utils/dataset";
+import { formatData } from "./utils/formatData";
 
 import styles from "./styles/App.module.css";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
   const [events, setEvents] = useState([]);
   const [select, setSelect] = useState({ city: "All", month: "All" });
   const [bookmarks, setBookmarks] = useState([]);
 
-  const data = Dataset();
+  const cities = unifiqueArray(data.map(({ city }) => city));
+  const months = unifiqueArray(data.map(({ month }) => month));
+
+  useEffect(() => {
+    const fetchData = async (url) => {
+      const res = await fetch(url);
+      const json = await res.json();
+      const result = formatData(json);
+      setData(result);
+      setIsLoading(false);
+    };
+    fetchData(
+      "https://raw.githubusercontent.com/xsolla/xsolla-frontend-school-2021/main/events.json"
+    );
+  }, []);
 
   useEffect(() => {
     const { city, month } = select;
@@ -68,13 +84,19 @@ const App = () => {
     <article className={styles.wrapper}>
       <h1 className={styles.title}>Event Listing</h1>
 
-      <SelectBar data={data} onChange={handleChange} />
+      {isLoading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <>
+          <SelectBar cities={cities} months={months} onChange={handleChange} />
 
-      <EventCards
-        events={events}
-        bookmarks={bookmarks}
-        handleBookmarkClick={handleBookmark}
-      />
+          <EventCards
+            events={events}
+            bookmarks={bookmarks}
+            handleBookmarkClick={handleBookmark}
+          />
+        </>
+      )}
     </article>
   );
 };

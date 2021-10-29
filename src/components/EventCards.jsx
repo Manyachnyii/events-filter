@@ -1,4 +1,5 @@
 import { EventCard } from "./EventCard";
+
 import styles from "../styles/EventCards.module.css";
 
 export const EventCards = ({ events, bookmarks, handleBookmarkClick }) => (

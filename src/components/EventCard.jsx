@@ -7,27 +7,26 @@ export const EventCard = ({
   info: { id, name, image, day },
   bookmarked,
   handleBookmarkClick,
-}) => {
-  return (
-    <div
-      className={styles.card}
-      style={{
-        background: `center bottom / cover no-repeat url(${image}), rgba(0, 0, 0, 0.2)`,
-        backgroundBlendMode: "overlay",
-      }}
-    >
-      <span>
-        <div onClick={() => handleBookmarkClick(id)}>
-          <img
-            className={styles.bookmark}
-            src={bookmarked ? mark : unmark}
-            alt=""
-          />
-        </div>
-        <span className={styles.day}>{day}</span>
-      </span>
-      <span className={styles.name}>{name}</span>
-    </div>
-  );
-};
+}) => (
+  <div
+    className={styles.card}
+    style={{
+      background: `center bottom / cover no-repeat url(${image}), rgba(0, 0, 0, 0.2)`,
+      backgroundBlendMode: "overlay",
+    }}
+  >
+    <span>
+      <div onClick={() => handleBookmarkClick(id)}>
+        <img
+          className={styles.bookmark}
+          src={bookmarked ? mark : unmark}
+          alt=""
+        />
+      </div>
+      <span className={styles.day}>{day}</span>
+    </span>
+    <span className={styles.name}>{name}</span>
+  </div>
+);
+
 export default EventCard;

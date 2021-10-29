@@ -1,21 +1,14 @@
-import { unifiqueArray } from "../utils/unifiqueArray";
-
 import styles from "../styles/SelectBar.module.css";
 
-export const SelectBar = ({ data, onChange }) => {
-  const cities = unifiqueArray(data.map(({ city }) => city));
-  const months = unifiqueArray(data.map(({ month }) => month));
+export const SelectBar = ({ cities, months, onChange }) => (
+  <section className={styles.selectBar}>
+    <span>City:</span>
+    <Select name="city" array={cities} onChange={onChange} />
 
-  return (
-    <section className={styles.selectBar}>
-      <span>City:</span>
-      <Select name="city" array={cities} onChange={onChange} />
-
-      <span>Month:</span>
-      <Select name="month" array={months} onChange={onChange} />
-    </section>
-  );
-};
+    <span>Month:</span>
+    <Select name="month" array={months} onChange={onChange} />
+  </section>
+);
 
 const Select = ({ name, array, onChange }) => (
   <select className={styles.select} name={name} onChange={onChange}>
