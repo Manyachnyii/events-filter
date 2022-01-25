@@ -35,6 +35,7 @@
   width: 14px;
   height: 18px;
   float: right;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

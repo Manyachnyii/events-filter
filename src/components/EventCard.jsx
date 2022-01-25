@@ -20,7 +20,7 @@ export const EventCard = ({
         <img
           className={styles.bookmark}
           src={bookmarked ? mark : unmark}
-          alt=""
+          alt="bookmark"
         />
       </div>
       <span className={styles.day}>{day}</span>
